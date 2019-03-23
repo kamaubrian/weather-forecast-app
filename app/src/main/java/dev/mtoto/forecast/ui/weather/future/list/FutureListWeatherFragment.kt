@@ -1,4 +1,4 @@
-package dev.mtoto.forecast.ui.weather.future
+package dev.mtoto.forecast.ui.weather.future.list
 
 import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
