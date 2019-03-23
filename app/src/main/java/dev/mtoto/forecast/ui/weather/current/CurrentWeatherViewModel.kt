@@ -1,4 +1,4 @@
-package dev.mtoto.forecast.ui.weather
+package dev.mtoto.forecast.ui.weather.current
 
 import androidx.lifecycle.ViewModel;
 

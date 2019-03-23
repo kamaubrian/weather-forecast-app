@@ -4,11 +4,11 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ui.weather.future.FutureListWeatherFragment">
+        tools:context=".ui.weather.future.futureweatherdetail.FutureWeatherDetailFragment">
 
     <TextView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="Future List Weather Fragment"/>
+            android:text="Future Weather Details"/>
 
 </FrameLayout>
