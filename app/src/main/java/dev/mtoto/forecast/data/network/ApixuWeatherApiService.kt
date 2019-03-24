@@ -1,4 +1,4 @@
-package dev.mtoto.forecast.data.service
+package dev.mtoto.forecast.data.network
 
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import dev.mtoto.forecast.data.network.response.CurrentWeatherResponse
@@ -11,7 +11,7 @@ import retrofit2.http.GET
 import retrofit2.http.Query
 
 const val API_KEY = "1787105301e04d889a492839192303"
-const val BASE_URL ="https://api.apixu.com/v1/"
+const val BASE_URL = "https://api.apixu.com/v1/"
 
 //http://api.apixu.com/v1/current.json?key=1787105301e04d889a492839192303&q=Nairobi tTHE QUERY URL
 interface ApixuWeatherApiService {
@@ -24,8 +24,10 @@ interface ApixuWeatherApiService {
 
     companion object {
         //static objects
-        operator fun invoke():ApixuWeatherApiService{
-            val requestInterceptor = Interceptor{
+        operator fun invoke(
+            connectivityInterceptor: ConnectivityInterceptor
+        ): ApixuWeatherApiService {
+            val requestInterceptor = Interceptor {
                 val url = it.request()
                     .url()
                     .newBuilder()
@@ -39,6 +41,7 @@ interface ApixuWeatherApiService {
             }
             val okHttpClient = OkHttpClient.Builder()
                 .addInterceptor(requestInterceptor)
+                .addInterceptor(connectivityInterceptor)
                 .build()
             return Retrofit.Builder()
                 .client(okHttpClient)
