@@ -45,7 +45,7 @@ class CurrentWeatherFragment : Fragment() {
 
         })
         GlobalScope.launch(Dispatchers.Main) {
-            weatherNetworkDataSource.fetchCurrentWeather("London","en")
+            weatherNetworkDataSource.fetchCurrentWeather("Nairobi","en")
 
         }
     }
