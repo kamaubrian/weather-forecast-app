@@ -1,4 +1,4 @@
-package dev.mtoto.forecast.data.response
+package dev.mtoto.forecast.data.db.entity
 
 import com.google.gson.annotations.SerializedName
 
