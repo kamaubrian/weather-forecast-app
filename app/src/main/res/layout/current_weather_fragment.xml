@@ -89,7 +89,7 @@
             app:layout_constraintWidth_percent="0.25"
             tools:src="@drawable/ic_wb_sunny_black_24dp"
             tools:tint="#f9a920"
-    />
+            android:contentDescription="@string/displays_weather_icon"/>
     <TextView
             android:id="@+id/textView_temperature"
             android:layout_width="wrap_content"

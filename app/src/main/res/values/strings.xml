@@ -4,4 +4,5 @@
     <string name="_7_days">7 Days</string>
     <string name="settings">Settings</string>
     <string name="loading">Loading</string>
+    <string name="displays_weather_icon">Displays Weather Icon</string>
 </resources>
