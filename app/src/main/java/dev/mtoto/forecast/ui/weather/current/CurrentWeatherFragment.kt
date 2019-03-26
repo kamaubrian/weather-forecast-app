@@ -49,7 +49,7 @@ class CurrentWeatherFragment : ScopedFragment(), KodeinAware {
         currentWeather.observe(this@CurrentWeatherFragment, Observer {
             if (it == null) return@Observer
             Log.d("Current Weather",it.windDirection)
-            text_current_weather.text = it.conditionIconUrl
+            //text_current_weather.text = it.conditionIconUrl
         })
 
     }
