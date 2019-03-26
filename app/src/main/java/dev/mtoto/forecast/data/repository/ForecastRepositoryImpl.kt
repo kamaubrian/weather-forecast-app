@@ -43,7 +43,7 @@ class ForecastRepositoryImpl(
 
     private suspend fun fetchCurrentWeather(){
         weatherNetworkDataSource.fetchCurrentWeather(
-            "Nairobi",
+            "Machakos",
             Locale.getDefault().language
         )
     }
