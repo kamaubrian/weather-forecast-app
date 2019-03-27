@@ -1,8 +1,6 @@
 package dev.mtoto.forecast.data.provider
 
 import android.content.Context
-import android.content.SharedPreferences
-import android.preference.PreferenceManager
 import dev.mtoto.forecast.internal.UnitSystem
 
 const val UNIT_SYSTEM = "UNIT_SYSTEM"

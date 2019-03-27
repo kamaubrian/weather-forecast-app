@@ -1,7 +1,9 @@
 package dev.mtoto.forecast
 
 import android.app.Application
+import android.content.Context
 import android.preference.PreferenceManager
+import com.google.android.gms.location.LocationServices
 import com.jakewharton.threetenabp.AndroidThreeTen
 import dev.mtoto.forecast.data.db.ForecastDatabase
 import dev.mtoto.forecast.data.network.*
@@ -29,8 +31,9 @@ class ForecastApplication : Application(), KodeinAware {
         bind() from singleton { instance<ForecastDatabase>().WeatherLocationDao() }
         bind<ConnectivityInterceptor>() with singleton { ConnectivityInterceptorImpl(instance()) }
         bind() from singleton { ApixuWeatherApiService(instance()) }
+        bind() from provider { LocationServices.getFusedLocationProviderClient(instance<Context>()) }
         bind<WeatherNetworkDataSource>() with singleton { WeatherNetworkDataSourceImpl(instance()) }
-        bind<LocationProvider>() with singleton { LocationProviderImpl(instance()) }
+        bind<LocationProvider>() with singleton { LocationProviderImpl(instance(),instance()) }
 
         bind<ForecastRepository>() with singleton {
             ForecastRepositoryImpl(
