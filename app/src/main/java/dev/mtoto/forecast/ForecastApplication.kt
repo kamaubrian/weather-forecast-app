@@ -26,20 +26,27 @@ class ForecastApplication : Application(), KodeinAware {
 
         bind() from singleton { ForecastDatabase(instance()) }
         bind() from singleton { instance<ForecastDatabase>().currentWeatherDao() }
-        bind() from singleton {instance<ForecastDatabase>().WeatherLocationDao()}
+        bind() from singleton { instance<ForecastDatabase>().WeatherLocationDao() }
         bind<ConnectivityInterceptor>() with singleton { ConnectivityInterceptorImpl(instance()) }
         bind() from singleton { ApixuWeatherApiService(instance()) }
         bind<WeatherNetworkDataSource>() with singleton { WeatherNetworkDataSourceImpl(instance()) }
-        bind<LocationProvider>() with singleton { LocationProviderImpl() }
+        bind<LocationProvider>() with singleton { LocationProviderImpl(instance()) }
 
-        bind<ForecastRepository>() with singleton { ForecastRepositoryImpl(instance(),instance(),instance(),instance()) }
+        bind<ForecastRepository>() with singleton {
+            ForecastRepositoryImpl(
+                instance(),
+                instance(),
+                instance(),
+                instance()
+            )
+        }
         bind<UnitProvider>() with singleton { UnitProviderImpl(instance()) }
-        bind() from provider { CurrentWeatherViewModelFactory(instance(),instance()) }
+        bind() from provider { CurrentWeatherViewModelFactory(instance(), instance()) }
     }
 
     override fun onCreate() {
         super.onCreate()
         AndroidThreeTen.init(this)
-        PreferenceManager.setDefaultValues(this,R.xml.preferences,false)
+        PreferenceManager.setDefaultValues(this, R.xml.preferences, false)
     }
 }

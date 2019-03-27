@@ -3,7 +3,7 @@ package dev.mtoto.forecast.data.provider
 import android.content.Context
 import dev.mtoto.forecast.data.db.entity.WeatherLocation
 
-class LocationProviderImpl() : LocationProvider {
+class LocationProviderImpl(context:Context) : PreferenceProvider(context), LocationProvider {
 
 
     override suspend fun getPreferredLocationString(): String {
