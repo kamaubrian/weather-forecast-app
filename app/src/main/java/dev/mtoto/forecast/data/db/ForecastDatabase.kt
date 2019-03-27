@@ -5,15 +5,18 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import dev.mtoto.forecast.data.db.dao.CurrentWeatherDao
+import dev.mtoto.forecast.data.db.dao.WeatherLocationDao
 import dev.mtoto.forecast.data.db.entity.CurrentWeatherEntry
+import dev.mtoto.forecast.data.db.entity.WeatherLocation
 
 @Database(
-    entities = [CurrentWeatherEntry::class],
+    entities = [CurrentWeatherEntry::class,WeatherLocation::class],
     version = 1
 )
 
 abstract class ForecastDatabase : RoomDatabase() {
     abstract fun currentWeatherDao(): CurrentWeatherDao
+    abstract fun WeatherLocationDao(): WeatherLocationDao
 
     companion object {
         @Volatile
