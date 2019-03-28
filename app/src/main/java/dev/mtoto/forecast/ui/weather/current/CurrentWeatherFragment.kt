@@ -1,6 +1,5 @@
 package dev.mtoto.forecast.ui.weather.current
 
-import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -8,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProviders
 import dev.mtoto.forecast.R
 import dev.mtoto.forecast.internal.glide.GlideApp
 import dev.mtoto.forecast.ui.base.ScopedFragment

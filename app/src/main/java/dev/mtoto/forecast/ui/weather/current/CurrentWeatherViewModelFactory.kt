@@ -4,7 +4,6 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import dev.mtoto.forecast.data.provider.UnitProvider
 import dev.mtoto.forecast.data.repository.ForecastRepository
-import dev.mtoto.forecast.internal.UnitSystem
 
 class CurrentWeatherViewModelFactory(
     private val forecastRepository: ForecastRepository,
