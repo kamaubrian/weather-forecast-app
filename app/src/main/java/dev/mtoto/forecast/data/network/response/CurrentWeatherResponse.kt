@@ -7,6 +7,7 @@ import dev.mtoto.forecast.data.db.entity.WeatherLocation
 data class CurrentWeatherResponse(
     @SerializedName("current")
     val currentWeatherEntry: CurrentWeatherEntry,
+    @SerializedName("location")
     val location: WeatherLocation
 
 )
