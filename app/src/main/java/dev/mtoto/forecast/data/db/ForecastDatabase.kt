@@ -13,7 +13,7 @@ import dev.mtoto.forecast.data.db.entity.FutureWeatherEntry
 import dev.mtoto.forecast.data.db.entity.WeatherLocation
 
 @Database(
-    entities = [CurrentWeatherEntry::class,WeatherLocation::class,FutureWeatherEntry::class],
+    entities = [CurrentWeatherEntry::class,FutureWeatherEntry::class,WeatherLocation::class],
     version = 1
 )
 @TypeConverters(LocalDateConverter::class)

@@ -14,16 +14,17 @@ import org.threeten.bp.LocalDate
 interface FutureWeatherDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insert(futureWEatherEntries: List<FutureWeatherEntry>)
+    fun insert(futureWeatherEntries: List<FutureWeatherEntry>)
 
     @Query("select * from future_weather where date(date) >= date(:startDate)")
-    fun getSimpleWeatherForecastMetric(startDate: LocalDate) : LiveData<List<MetricSimpleFutureWeatherEntry>>
+    fun getSimpleWeatherForecastsMetric(startDate: LocalDate): LiveData<List<MetricSimpleFutureWeatherEntry>>
 
     @Query("select * from future_weather where date(date) >= date(:startDate)")
-    fun getSimpleWeatherForecastImperial(startDate: LocalDate) : LiveData<List<ImperialSimpleFutureWeatherEntry>>
+    fun getSimpleWeatherForecastsImperial(startDate: LocalDate): LiveData<List<ImperialSimpleFutureWeatherEntry>>
+
 
     @Query("select count(id) from future_weather where date(date) >= date(:startDate)")
-    fun countFutureWeather(startDate: LocalDate)
+    fun countFutureWeather(startDate: LocalDate): Int
 
     @Query("delete from future_weather where date(date) < date(:firstDateToKeep)")
     fun deleteOldEntries(firstDateToKeep: LocalDate)
