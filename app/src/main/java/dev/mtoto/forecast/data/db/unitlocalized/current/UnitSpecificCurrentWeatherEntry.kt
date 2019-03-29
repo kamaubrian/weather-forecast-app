@@ -1,4 +1,4 @@
-package dev.mtoto.forecast.data.db.unitlocalized
+package dev.mtoto.forecast.data.db.unitlocalized.current
 
 interface UnitSpecificCurrentWeatherEntry {
     val temperature: Double;

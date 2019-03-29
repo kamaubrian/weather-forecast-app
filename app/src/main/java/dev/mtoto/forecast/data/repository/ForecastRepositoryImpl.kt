@@ -4,7 +4,7 @@ import androidx.lifecycle.LiveData
 import dev.mtoto.forecast.data.db.dao.CurrentWeatherDao
 import dev.mtoto.forecast.data.db.dao.WeatherLocationDao
 import dev.mtoto.forecast.data.db.entity.WeatherLocation
-import dev.mtoto.forecast.data.db.unitlocalized.UnitSpecificCurrentWeatherEntry
+import dev.mtoto.forecast.data.db.unitlocalized.current.UnitSpecificCurrentWeatherEntry
 import dev.mtoto.forecast.data.network.WeatherNetworkDataSource
 import dev.mtoto.forecast.data.network.response.CurrentWeatherResponse
 import dev.mtoto.forecast.data.provider.LocationProvider

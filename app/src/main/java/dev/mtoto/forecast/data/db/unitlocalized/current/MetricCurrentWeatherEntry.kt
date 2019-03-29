@@ -1,4 +1,4 @@
-package dev.mtoto.forecast.data.db.unitlocalized
+package dev.mtoto.forecast.data.db.unitlocalized.current
 
 import androidx.room.ColumnInfo
 
@@ -19,4 +19,4 @@ class MetricCurrentWeatherEntry(
     override val feelsLikeTemperature: Double,
     @ColumnInfo(name = "visKm")
     override val visibilityDistance: Double
-):UnitSpecificCurrentWeatherEntry
+): UnitSpecificCurrentWeatherEntry
