@@ -45,7 +45,7 @@ class CurrentWeatherFragment : ScopedFragment(), KodeinAware {
     }
 
     private fun chooseLocalizedUnitAbbreviation(metric: String, imperial: String): String {
-        val unitAbbreviation = if(viewModel.isMetric) metric else imperial
+        val unitAbbreviation = if(viewModel.isMetricUnit) metric else imperial
         return unitAbbreviation
     }
 

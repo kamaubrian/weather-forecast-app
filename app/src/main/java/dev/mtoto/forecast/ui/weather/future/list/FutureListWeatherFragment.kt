@@ -7,12 +7,15 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
 import dev.mtoto.forecast.R
+import org.kodein.di.Kodein
+import org.kodein.di.KodeinAware
+import org.kodein.di.android.x.closestKodein
+import org.kodein.di.generic.instance
 
-class FutureListWeatherFragment : Fragment() {
+class FutureListWeatherFragment : Fragment(), KodeinAware {
+    override val kodein by closestKodein()
 
-    companion object {
-        fun newInstance() = FutureListWeatherFragment()
-    }
+    private val futureWeatherListViewModel: FutureWeatherListViewModelFactory by instance()
 
     private lateinit var viewModel: FutureListWeatherViewModel
 
@@ -25,8 +28,8 @@ class FutureListWeatherFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProviders.of(this).get(FutureListWeatherViewModel::class.java)
-        // TODO: Use the ViewModel
+        viewModel = ViewModelProviders.of(this, futureWeatherListViewModel)
+            .get(FutureListWeatherViewModel::class.java)
     }
 
 }

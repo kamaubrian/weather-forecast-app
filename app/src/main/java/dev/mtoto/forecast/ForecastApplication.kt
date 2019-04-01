@@ -15,6 +15,7 @@ import dev.mtoto.forecast.data.repository.ForecastRepository
 import dev.mtoto.forecast.data.repository.ForecastRepositoryImpl
 import dev.mtoto.forecast.ui.weather.current.CurrentWeatherViewModelFactory
 import dev.mtoto.forecast.ui.weather.future.list.FutureListWeatherViewModel
+import dev.mtoto.forecast.ui.weather.future.list.FutureWeatherListViewModelFactory
 import org.kodein.di.Kodein
 import org.kodein.di.KodeinAware
 import org.kodein.di.android.x.androidXModule
@@ -48,7 +49,7 @@ class ForecastApplication : Application(), KodeinAware {
         }
         bind<UnitProvider>() with singleton { UnitProviderImpl(instance()) }
         bind() from provider { CurrentWeatherViewModelFactory(instance(), instance()) }
-        bind() from provider {FutureListWeatherViewModel(instance(),instance())}
+        bind() from provider { FutureWeatherListViewModelFactory(instance(), instance()) }
     }
 
     override fun onCreate() {
