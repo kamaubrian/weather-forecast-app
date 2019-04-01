@@ -14,7 +14,6 @@ import dev.mtoto.forecast.data.provider.UnitProviderImpl
 import dev.mtoto.forecast.data.repository.ForecastRepository
 import dev.mtoto.forecast.data.repository.ForecastRepositoryImpl
 import dev.mtoto.forecast.ui.weather.current.CurrentWeatherViewModelFactory
-import dev.mtoto.forecast.ui.weather.future.list.FutureListWeatherViewModel
 import dev.mtoto.forecast.ui.weather.future.list.FutureWeatherListViewModelFactory
 import org.kodein.di.Kodein
 import org.kodein.di.KodeinAware
