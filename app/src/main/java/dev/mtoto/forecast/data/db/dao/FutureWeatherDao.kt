@@ -6,6 +6,8 @@ import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import dev.mtoto.forecast.data.db.entity.FutureWeatherEntry
+import dev.mtoto.forecast.data.db.unitlocalized.future.detail.ImperialDetailFutureWeatherEntry
+import dev.mtoto.forecast.data.db.unitlocalized.future.detail.MetricDetailFutureWeatherEntry
 import dev.mtoto.forecast.data.db.unitlocalized.future.list.ImperialSimpleFutureWeatherEntry
 import dev.mtoto.forecast.data.db.unitlocalized.future.list.MetricSimpleFutureWeatherEntry
 import org.threeten.bp.LocalDate
@@ -21,6 +23,12 @@ interface FutureWeatherDao {
 
     @Query("select * from future_weather where date(date) >= date(:startDate)")
     fun getSimpleWeatherForecastsImperial(startDate: LocalDate): LiveData<List<ImperialSimpleFutureWeatherEntry>>
+
+    @Query("select * from future_weather where date(date) = date(:date)")
+    fun getDetailedWeatherByDateMetric(date: LocalDate) : LiveData<MetricDetailFutureWeatherEntry>
+
+    @Query("select * from future_weather where date(date) = date(:date)")
+    fun getDetailedWeatherByDateImperial(date: LocalDate) : LiveData<ImperialDetailFutureWeatherEntry>
 
 
     @Query("select count(id) from future_weather where date(date) >= date(:startDate)")

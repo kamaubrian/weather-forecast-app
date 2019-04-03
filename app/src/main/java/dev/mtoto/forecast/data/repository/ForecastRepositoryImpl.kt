@@ -6,6 +6,7 @@ import dev.mtoto.forecast.data.db.dao.FutureWeatherDao
 import dev.mtoto.forecast.data.db.dao.WeatherLocationDao
 import dev.mtoto.forecast.data.db.entity.WeatherLocation
 import dev.mtoto.forecast.data.db.unitlocalized.current.UnitSpecificCurrentWeatherEntry
+import dev.mtoto.forecast.data.db.unitlocalized.future.detail.UnitSpecificDetailFutureWeatherDetail
 import dev.mtoto.forecast.data.db.unitlocalized.future.list.UnitSpecificSimpleFutureWeatherEntry
 import dev.mtoto.forecast.data.network.FORECAST_DAY_COUNT
 import dev.mtoto.forecast.data.network.WeatherNetworkDataSource
@@ -45,13 +46,24 @@ class ForecastRepositoryImpl(
     }
 
 
+    override suspend fun getFutureWeatherByDate(
+        date: LocalDate,
+        metric: Boolean
+    ): LiveData<out UnitSpecificDetailFutureWeatherDetail> {
+        return withContext(Dispatchers.IO){
+            initWeatherData()
+            return@withContext if(metric) futureWeatherDao.getDetailedWeatherByDateMetric(date)
+            else futureWeatherDao.getDetailedWeatherByDateImperial(date)
+        }
+    }
+
     override suspend fun getFutureWeatherList(
         startDate: LocalDate,
         metric: Boolean
     ): LiveData<out List<UnitSpecificSimpleFutureWeatherEntry>> {
-        return withContext(Dispatchers.IO){
+        return withContext(Dispatchers.IO) {
             initWeatherData()
-            return@withContext if(metric)futureWeatherDao.getSimpleWeatherForecastsMetric(startDate)
+            return@withContext if (metric) futureWeatherDao.getSimpleWeatherForecastsMetric(startDate)
             else futureWeatherDao.getSimpleWeatherForecastsImperial(startDate)
         }
 
@@ -80,12 +92,12 @@ class ForecastRepositoryImpl(
         }
     }
 
-    private fun persistFetchedFutureWeather(fetchFutureWeatherResponse: FutureWeatherResponse){
-        fun deleteOldForecastData(){
+    private fun persistFetchedFutureWeather(fetchFutureWeatherResponse: FutureWeatherResponse) {
+        fun deleteOldForecastData() {
             val today = LocalDate.now()
             futureWeatherDao.deleteOldEntries(today)
         }
-        GlobalScope.launch(Dispatchers.IO){
+        GlobalScope.launch(Dispatchers.IO) {
             deleteOldForecastData()
             val futureWeatherList = fetchFutureWeatherResponse.forecast.entries
             futureWeatherDao.insert(futureWeatherList)
@@ -104,7 +116,7 @@ class ForecastRepositoryImpl(
         if (isFetchCurrentNeeded(lastWeatherLocation.zonedDateTime))
             fetchCurrentWeather()
 
-        if(isFetchedFutureNeeded())
+        if (isFetchedFutureNeeded())
             fetchFutureWeather()
     }
 
@@ -115,7 +127,7 @@ class ForecastRepositoryImpl(
         )
     }
 
-    private suspend fun fetchFutureWeather(){
+    private suspend fun fetchFutureWeather() {
         weatherNetworkDataSource.fetchFutureWeather(
             locationProvider.getPreferredLocationString(),
             Locale.getDefault().language
@@ -127,7 +139,7 @@ class ForecastRepositoryImpl(
         return lastFetchTime.isBefore(thiryMinutesAgo)
     }
 
-    private fun isFetchedFutureNeeded() :Boolean {
+    private fun isFetchedFutureNeeded(): Boolean {
         val today = LocalDate.now()
         val futureWeatherCount = futureWeatherDao.countFutureWeather(today)
         return futureWeatherCount < FORECAST_DAY_COUNT
