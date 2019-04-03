@@ -1,4 +1,4 @@
-package dev.mtoto.forecast.data.db.unitlocalized.future
+package dev.mtoto.forecast.data.db.unitlocalized.future.list
 
 import org.threeten.bp.LocalDate
 

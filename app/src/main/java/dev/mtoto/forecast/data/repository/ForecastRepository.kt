@@ -3,7 +3,7 @@ package dev.mtoto.forecast.data.repository
 import androidx.lifecycle.LiveData
 import dev.mtoto.forecast.data.db.entity.WeatherLocation
 import dev.mtoto.forecast.data.db.unitlocalized.current.UnitSpecificCurrentWeatherEntry
-import dev.mtoto.forecast.data.db.unitlocalized.future.UnitSpecificSimpleFutureWeatherEntry
+import dev.mtoto.forecast.data.db.unitlocalized.future.list.UnitSpecificSimpleFutureWeatherEntry
 import org.threeten.bp.LocalDate
 
 interface ForecastRepository {

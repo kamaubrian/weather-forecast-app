@@ -2,7 +2,6 @@ package dev.mtoto.forecast.data.db.entity
 
 import androidx.room.Embedded
 import com.google.gson.annotations.SerializedName
-import dev.mtoto.forecast.data.db.entity.Condition
 
 data class Day(
     @SerializedName("avgtemp_c")

@@ -6,7 +6,7 @@ import dev.mtoto.forecast.data.db.dao.FutureWeatherDao
 import dev.mtoto.forecast.data.db.dao.WeatherLocationDao
 import dev.mtoto.forecast.data.db.entity.WeatherLocation
 import dev.mtoto.forecast.data.db.unitlocalized.current.UnitSpecificCurrentWeatherEntry
-import dev.mtoto.forecast.data.db.unitlocalized.future.UnitSpecificSimpleFutureWeatherEntry
+import dev.mtoto.forecast.data.db.unitlocalized.future.list.UnitSpecificSimpleFutureWeatherEntry
 import dev.mtoto.forecast.data.network.FORECAST_DAY_COUNT
 import dev.mtoto.forecast.data.network.WeatherNetworkDataSource
 import dev.mtoto.forecast.data.network.response.CurrentWeatherResponse
