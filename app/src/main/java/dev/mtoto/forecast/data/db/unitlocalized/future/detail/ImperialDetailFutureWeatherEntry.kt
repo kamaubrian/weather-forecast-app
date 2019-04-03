@@ -8,13 +8,13 @@ data class ImperialDetailFutureWeatherEntry(
     @ColumnInfo(name = "date")
     override val date: LocalDate,
 
-    @ColumnInfo(name = "maxTempF")
+    @ColumnInfo(name = "maxtempF")
     override val maxTemperature: Double,
 
-    @ColumnInfo(name = "minTempF")
+    @ColumnInfo(name = "mintempF")
     override val minTemperature: Double,
 
-    @ColumnInfo(name = "avgTempF")
+    @ColumnInfo(name = "avgtempF")
     override val avgTemperature: Double,
 
     @ColumnInfo(name = "condition_text")
